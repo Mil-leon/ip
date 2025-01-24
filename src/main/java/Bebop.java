@@ -38,14 +38,14 @@ public class Bebop {
                     continue;
                 case "mark":
                     taskNum = Integer.parseInt(i_list[1]);
-                    taskList.get(taskNum).markDone();
+                    taskList.get(taskNum - 1).markDone();
                     System.out.println("\tGood Job! I've marked the task as done!\n\t" +
                             taskList.get(taskNum - 1).printTask());
                     System.out.println("\t__________________________________");
                     continue;
                 case "unmark":
                     taskNum = Integer.parseInt(i_list[1]);
-                    taskList.get(taskNum).unmarkDone();
+                    taskList.get(taskNum - 1).unmarkDone();
                     System.out.println("\tAlright! Let's get this done soon :)\n\t" +
                             taskList.get(taskNum - 1).printTask());
                     System.out.println("\t__________________________________");
@@ -116,6 +116,13 @@ public class Bebop {
                             e.printTask());
                     System.out.println("\t" + taskList.size() + " tasks to be done");
                     System.out.println("\t__________________________________");
+                case "delete":
+                    taskNum = Integer.parseInt(i_list[1]);
+                    System.out.println("\tAlright! Congrats on finishing your task:)\n\t" +
+                            taskList.get(taskNum - 1).printTask());
+                    System.out.println("\t__________________________________");
+                    taskList.remove(taskNum - 1);
+                    continue;
                 default :
                     System.out.println("Sorry that's not a valid command :(");
             }
