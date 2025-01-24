@@ -7,16 +7,16 @@ public class Bebop {
         Scanner scan = new Scanner(System.in);
         ArrayList<Task> taskList = new ArrayList<>(100);
 
-        String logo = "\t _          _                 \n" +
-                "\t| |        | |                \n" +
-                "\t| |__   ___| |__   ___  _ __  \n" +
-                "\t| '_ \\ / _ \\ '_ \\ / _ \\| '_ \\ \n" +
+        String logo = "\t _          _\n" +
+                "\t| |        | |\n" +
+                "\t| |__   ___| |__   ___  _ __\n" +
+                "\t| '_ \\ / _ \\ '_ \\ / _ \\| '_ \\\n" +
                 "\t| |_) |  __/ |_) | (_) | |_) |\n" +
-                "\t|_.__/ \\___|_.__/ \\___/| .__/ \n" +
-                "\t                       | |    \n" +
-                "\t                       |_|    \t" + "\n\tWhat will you be doing today? \n" +
+                "\t|_.__/ \\___|_.__/ \\___/| .__/\n" +
+                "\t                       | |\n" +
+                "\t                       |_|" + "\n\tWhat will you be doing today?\n" +
                 "\t__________________________________";
-        System.out.println("\tHowdy! How's it going? \n" + logo);
+        System.out.println("\tHowdy! How's it going?\n" + logo);
         String[] t_list;
         String[] d_list;
         String[] e_list;
@@ -47,7 +47,7 @@ public class Bebop {
                     taskNum = Integer.parseInt(i_list[1]);
                     taskList.get(taskNum).unmarkDone();
                     System.out.println("\tAlright! Let's get this done soon :)\n\t" +
-                            taskList.get(taskNum).printTask());
+                            taskList.get(taskNum - 1).printTask());
                     System.out.println("\t__________________________________");
                     continue;
                 case "todo":
@@ -64,7 +64,7 @@ public class Bebop {
                     d_list = t_list[1].split(" /by");
                     Deadline d = new Deadline(d_list[0], d_list[1]);
                     taskList.add(d);
-                    System.out.println("\tDeadlines, shag ah bro ;(. \n\t" +
+                    System.out.println("\tDeadlines, shag ah bro ;(.\n\t" +
                             d.printTask());
                     System.out.println("\t" + taskList.size() + " tasks to be done");
                     System.out.println("\t__________________________________");
