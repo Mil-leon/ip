@@ -1,11 +1,17 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
+import java.io.File;
 
 public class Bebop {
-    public static void main(String[] args) throws BebopException{
+    public static void main(String[] args) throws BebopException, IOException {
         Scanner scan = new Scanner(System.in);
         ArrayList<Task> taskList = new ArrayList<>(100);
+        String[] todos;
+        String[] deadlines;
+        String[] events;
+        File directory = new File("data");
         String logo = "\t _          _\n" +
                 "\t| |        | |\n" +
                 "\t| |__   ___| |__   ___  _ __\n" +
@@ -16,9 +22,20 @@ public class Bebop {
                 "\t                       |_|" + "\n\tWhat will you be doing today?\n" +
                 "\t__________________________________";
         System.out.println("\tHowdy! How's it going?\n" + logo);
-        String[] todos;
-        String[] deadlines;
-        String[] events;
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+        File file = new File(directory, "Bebop.txt");
+        try {
+            boolean c = file.createNewFile();
+            if (c) {
+                System.out.println("\tA new save file has been created");
+            } else {
+                System.out.println("\tSaved task are still remembered");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while creating the file.");
+        }
         while (true) {
             String input = scan.nextLine();
             String[] inputs = input.split(" ");
@@ -139,6 +156,10 @@ public class Bebop {
                 throw new BebopException("\tPlease give a valid event format \"event EVENTNAME /from STARTTIME /to ENDTIME\"" );
             }
         }
+    }
+
+    public static void readFile() {
+
     }
 
 }
