@@ -123,7 +123,7 @@ public class Bebop {
                 taskList.remove(taskNum - 1);
                 continue;
             default:
-                System.out.println("\tSorry that's not a valid command :(");
+                System.out.println("\tSorry that's not a valid command :D, please use an appropriate format");
             }
         }
     }
@@ -132,11 +132,14 @@ public class Bebop {
         if (arr.length <= 1) {
             switch (s) {
             case "t":
-                throw new BebopException("\tPlease give a valid todo format \"todo EVENTNAME\"");
+                throw new BebopException("\tPlease give a valid todo format: " +
+                        "\"todo EVENTNAME\"");
             case "d":
-                throw new BebopException("\tPlease give a valid deadline format \"deadline EVENTNAME /by ENDTIME\"");
+                throw new BebopException("\tPlease give a valid deadline format: " +
+                        "\"deadline EVENTNAME /by ENDTIME\"");
             case "e":
-                throw new BebopException("\tPlease give a valid event format \"event EVENTNAME /from STARTTIME /to ENDTIME\"" );
+                throw new BebopException("\tPlease give a valid event format: " +
+                        "\"event EVENTNAME /from STARTTIME /to ENDTIME\"" );
             }
         }
     }
