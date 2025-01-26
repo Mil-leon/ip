@@ -2,9 +2,9 @@ public abstract class Task {
     protected String description;
     protected boolean isDone;
 
-    public Task(String d) {
+    public Task(String d, boolean isDone) {
         this.description = d;
-        this.isDone = false;
+        this.isDone = isDone;
     }
 
     public String getStatus() {
