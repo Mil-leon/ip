@@ -1,7 +1,7 @@
 public class Deadline extends Task {
     String start;
-    public Deadline(String d, String start) {
-        super(d);
+    public Deadline(String description, boolean isDone, String start) {
+        super(description, isDone);
         this.start = start;
     }
 
