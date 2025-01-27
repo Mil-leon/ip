@@ -14,7 +14,6 @@ public class Todo extends Task {
         System.out.println("\tYou got it buddy, get it done quick :D\n\t" +
                 this.printTask());
         System.out.println("\t" + size + " tasks to be done");
-        System.out.println("\t__________________________________");
     }
 
 }
