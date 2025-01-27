@@ -9,15 +9,40 @@ import java.util.Scanner;
 import java.io.File;
 
 public class Bebop {
+
+    private Storage storage;
+    private TaskList tasks;
+    private Ui ui;
+    private Parser parser;
+
+    public Bebop(String filePath) {
+        ui = new Ui();
+        parser = new Parser();
+        storage = new Storage(filePath);
+        tasks = new TaskList();
+    }
+
+    public void run() {
+        ui.welcomeGuest();
+        boolean isContinuing = true;
+        while (isContinuing) {
+                String command = ui.readCommand();
+                ui.divider();
+                Command c = parser.parse(command);
+                isContinuing = c.execute(tasks, ui, storage);
+                ui.divider();
+        }
+    }
     public static void main(String[] args) throws BebopException, IOException {
-        Scanner scan = new Scanner(System.in);
+        new Bebop("data/Bebop.txt").run();
+    }
+    /*Scanner scan = new Scanner(System.in);
         ArrayList<Task> taskList = new ArrayList<>(100);
         boolean isContinuing = true;
         File directory = new File("data");
         String[] todos;
         String[] deadlines;
         String[] events;
-        printIntro();
 
         if (!directory.exists()) {
             directory.mkdirs();
@@ -170,25 +195,9 @@ public class Bebop {
                         "\"event EVENTNAME /from STARTTIME /to ENDTIME\"" );
             }
         }
-    }
+    }*/
 
-    public static void printIntro() {
-        String logo = "\t _          _\n" +
-                "\t| |        | |\n" +
-                "\t| |__   ___| |__   ___  _ __\n" +
-                "\t| '_ \\ / _ \\ '_ \\ / _ \\| '_ \\\n" +
-                "\t| |_) |  __/ |_) | (_) | |_) |\n" +
-                "\t|_.__/ \\___|_.__/ \\___/| .__/\n" +
-                "\t                       | |\n" +
-                "\t                       |_|" + "\n\tWhat will you be doing today?\n" +
-                "\t__________________________________";
-        System.out.println("\tHowdy! How's it going?\n" + logo);
-        System.out.println("\tTODO : todo EVENTNAME");
-        System.out.println("\tDEADLINE : deadline EVENTNAME /by ENDTIME");
-        System.out.println("\tEVENT : event EVENTNAME /from STARTTIME /to ENDTIME");
-    }
-
-    public static boolean isFormatted(String[] list, String type) {
+    /*public static boolean isFormatted(String[] list, String type) {
         try {
             checkToDo(list, type);
             return true;
@@ -206,7 +215,7 @@ public class Bebop {
         } catch (DateTimeParseException e) {
             return false;
         }
-    }
+    }*/
 
 
 }
