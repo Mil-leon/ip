@@ -111,7 +111,7 @@ public class Bebop {
                     System.out.println(b.getMessage());
                     continue;
                 }
-                deadlines = todos[1].split(" /by");
+                deadlines = todos[1].split(" /by ");
                 try {
                     checkToDo(deadlines, "d");
                 } catch (BebopException b) {
