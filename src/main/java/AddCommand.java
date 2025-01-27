@@ -11,7 +11,7 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public boolean execute(TaskList tasks, Ui ui, Storage storage){
+    public boolean execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
         if (this.type.equals("t")) {
             String[] todos = command.split("todo ");
             if (isFormatted(todos, "t")) {

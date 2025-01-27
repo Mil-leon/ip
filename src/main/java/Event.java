@@ -30,7 +30,6 @@ public class Event extends Task{
         System.out.println("\tYippee, hope it's a fun event :D\n\t" +
                 this.printTask());
         System.out.println("\t" + size + " tasks to be done");
-        System.out.println("\t__________________________________");
     }
 
 
