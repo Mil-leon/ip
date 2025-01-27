@@ -1,16 +1,21 @@
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import static java.time.LocalDate.now;
 
 public class Deadline extends Task {
     String start;
-    LocalDate startDate;
+    LocalDateTime startDate;
+
     public Deadline(String description, boolean isDone, String start) {
         super(description, isDone);
+        String[] startTemp = start.split(" ");
         this.start = start;
-        startDate = LocalDate.parse(start);
+        LocalTime t = LocalTime.parse(startTemp[1]);
+        startDate = LocalDate.parse(startTemp[0]).atTime(t);
     }
 
     @Override
@@ -18,7 +23,12 @@ public class Deadline extends Task {
         return "[D]" + this.getStatus() + " " + this.description + " "  + "(by: " + printDate(startDate) +  ")";
     };
 
-    public String printDate(LocalDate date) {
-        return date.getMonth() + " " + date.getDayOfMonth() + " " + date.getYear();
+    @Override
+    public void printSuccess(int size) {
+        System.out.println("\tDeadlines, shag ah bro ;(.\n\t" +
+                this.printTask());
+        System.out.println("\t" + size + " tasks to be done");
+        System.out.println("\t__________________________________");
     }
+
 }

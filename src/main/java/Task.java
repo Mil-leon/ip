@@ -1,3 +1,7 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 public abstract class Task {
     protected String description;
     protected boolean isDone;
@@ -20,4 +24,12 @@ public abstract class Task {
     }
 
     public abstract String printTask();
+
+    public abstract void printSuccess(int size);
+
+    public String printDate(LocalDateTime date) {
+        return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    };
+
+
 }
