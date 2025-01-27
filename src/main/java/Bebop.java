@@ -1,5 +1,8 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -82,70 +85,50 @@ public class Bebop {
                 continue;
             case "todo":
                 todos = input.split("todo ");
-                try {
-                    checkToDo(todos, "t");
-                } catch (BebopException b) {
-                    System.out.println(b.getMessage());
+                if (!isFormatted(todos, "t")) {
                     continue;
                 }
                 Todo t = new Todo(todos[1], false);
                 taskList.add(t);
-                System.out.println("\tYou got it buddy, get it done quick :D\n\t" +
-                        t.printTask());
-                System.out.println("\t" + taskList.size() + " tasks to be done");
-                System.out.println("\t__________________________________");
+                t.printSuccess(taskList.size());
                 continue;
             case "deadline":
                 todos = input.split("deadline ");
-                try {
-                    checkToDo(todos, "d");
-                } catch (BebopException b) {
-                    System.out.println(b.getMessage());
+                if (!isFormatted(todos, "d")) {
                     continue;
                 }
-                deadlines = todos[1].split(" /by");
-                try {
-                    checkToDo(deadlines, "d");
-                } catch (BebopException b) {
-                    System.out.println(b.getMessage());
+                deadlines = todos[1].split(" /by ");
+                if (!isFormatted(deadlines, "d")) {
                     continue;
                 }
-
-                Deadline d = new Deadline(deadlines[0], false, deadlines[1]);
-                taskList.add(d);
-                System.out.println("\tDeadlines, shag ah bro ;(.\n\t" +
-                        d.printTask());
-                System.out.println("\t" + taskList.size() + " tasks to be done");
-                System.out.println("\t__________________________________");
+                if (isValidLocalDateTime(deadlines[1])) {
+                    Deadline d = new Deadline(deadlines[0], false, deadlines[1]);
+                    taskList.add(d);
+                    d.printSuccess(taskList.size());
+                } else {
+                    System.out.println("Incorrect time format! Valid time format is YYYY-MM-DD HH:MM");
+                }
                 continue;
             case "event":
                 todos = input.split("event ");
-                try {
-                    checkToDo(todos, "e");
-                } catch (BebopException b) {
-                    System.out.println(b.getMessage());
+                if (!isFormatted(todos, "e")) {
                     continue;
                 }
-                deadlines = todos[1].split(" /from");
-                try {
-                    checkToDo(deadlines, "e");
-                } catch (BebopException b) {
-                    System.out.println(b.getMessage());
+                deadlines = todos[1].split(" /from ");
+                if (!isFormatted(deadlines, "e")) {
                     continue;
                 }
-                events = deadlines[1].split(" /to");
-                try {
-                    checkToDo(events, "e");
-                } catch (BebopException b) {
-                    System.out.println(b.getMessage());
+                events = deadlines[1].split(" /to ");
+                if (!isFormatted(events, "e")) {
                     continue;
                 }
-                Event e = new Event(deadlines[0], false, events[0], events[1]);
-                taskList.add(e);
-                System.out.println("\tYippee, hope it's a fun event :D\n\t" +
-                        e.printTask());
-                System.out.println("\t" + taskList.size() + " tasks to be done");
-                System.out.println("\t__________________________________");
+                if (isValidLocalDateTime(events[0]) && isValidLocalDateTime(events[1])) {
+                    Event e = new Event(deadlines[0], false, events[0], events[1]);
+                    taskList.add(e);
+                    e.printSuccess(taskList.size());
+                } else {
+                    System.out.println("Incorrect time format! Valid time format is YYYY-MM-DD HH:MM");
+                }
                 continue;
             case "delete":
                 taskNum = Integer.parseInt(inputs[1]);
@@ -205,6 +188,25 @@ public class Bebop {
         System.out.println("\tEVENT : event EVENTNAME /from STARTTIME /to ENDTIME");
     }
 
+    public static boolean isFormatted(String[] list, String type) {
+        try {
+            checkToDo(list, type);
+            return true;
+        } catch (BebopException b) {
+            System.out.println(b.getMessage());
+            return false;
+        }
+    }
+
+    public static boolean isValidLocalDateTime(String dateTimeStr) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        try {
+            LocalDateTime.parse(dateTimeStr, formatter);
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
 
 
 }
