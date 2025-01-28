@@ -15,7 +15,7 @@ public class MarkCommand extends Command {
     }
     @Override
     public boolean execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
-        if (!isValid || index > tasks.size() - 1) {
+        if (!isValid || index > tasks.size()) {
             throw new BebopException("\t Mark/Unmark command can only be done with an integer index");
         }
         if (this.isDone) {

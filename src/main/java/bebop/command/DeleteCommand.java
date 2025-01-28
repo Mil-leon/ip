@@ -13,7 +13,7 @@ public class DeleteCommand extends Command {
     public boolean execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
         String[] input = this.command.split(" ");
         if (input.length == 1 || input.length > 2 || !isInteger(input[1])
-                || Integer.parseInt(input[1]) > (tasks.size() - 1)) {
+                || Integer.parseInt(input[1]) > (tasks.size())) {
             throw new BebopException("\tDelete only accepts valid integers");
         }
         int taskNum = Integer.parseInt(input[1]);
