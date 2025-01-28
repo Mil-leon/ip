@@ -1,8 +1,7 @@
+package bebop.task;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 import static java.time.LocalDate.now;
 
@@ -28,6 +27,10 @@ public class Deadline extends Task {
         System.out.println("\tDeadlines, shag ah bro ;(.\n\t" +
                 this.printTask());
         System.out.println("\t" + size + " tasks to be done");
+    }
+
+    public String getStart() {
+        return this.start;
     }
 
 }

@@ -1,3 +1,5 @@
+package bebop.command;
+
 public class Parser {
 
     public Command parse(String command) {

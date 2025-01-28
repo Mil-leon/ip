@@ -1,6 +1,6 @@
+package bebop.task;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 
 public abstract class Task {
     protected String description;
@@ -31,5 +31,8 @@ public abstract class Task {
         return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     };
 
+    public String getDescription() {
+        return description;
+    }
 
 }

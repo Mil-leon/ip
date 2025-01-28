@@ -1,12 +1,11 @@
-import java.io.FileWriter;
+package bebop.ui;
+
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Scanner;
-import java.io.File;
+
+import bebop.command.Command;
+import bebop.command.Parser;
+import bebop.exception.BebopException;
+import bebop.task.TaskList;
 
 public class Bebop {
 
@@ -23,7 +22,7 @@ public class Bebop {
         tasks = storage.load(tasks);
     }
 
-    public void run() throws IOException, BebopException{
+    public void run() throws IOException, BebopException {
         ui.welcomeGuest();
         boolean isContinuing = true;
         try {

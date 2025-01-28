@@ -1,3 +1,10 @@
+package bebop.ui;
+import bebop.task.Deadline;
+import bebop.task.Task;
+import bebop.task.Event;
+import bebop.task.TaskList;
+import bebop.task.Todo;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -56,12 +63,12 @@ public class Storage {
         FileWriter fw = new FileWriter(this.fileName, false);
         for (int i = 0; i < tasks.size(); i++) {
             if (tasks.getTask(i) instanceof Todo t) {
-                fw.write("T | " + t.getStatus() + " | " + t.description + "\n");
+                fw.write("T | " + t.getStatus() + " | " + t.getDescription() + "\n");
             } else if (tasks.getTask(i) instanceof Deadline d) {
-                fw.write("D | " + d.getStatus() + " | " + d.description + " | " + d.start + "\n");
+                fw.write("D | " + d.getStatus() + " | " + d.getDescription() + " | " + d.getStart() + "\n");
             } else {
                 Event e = (Event) tasks.getTask(i);
-                fw.write("E | " + e.getStatus() + " | " + e.description + " | " + e.start + " | " + e.end + "\n");
+                fw.write("E | " + e.getStatus() + " | " + e.getDescription() + " | " + e.getStart() + " | " + e.getEnd() + "\n");
             }
         }
         fw.close();

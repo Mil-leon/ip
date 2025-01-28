@@ -1,3 +1,4 @@
+package bebop.task;
 public class Todo extends Task {
     public Todo(String description, Boolean isDone) {
         super(description, isDone);
