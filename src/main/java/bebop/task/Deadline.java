@@ -5,10 +5,21 @@ import java.time.LocalTime;
 
 import static java.time.LocalDate.now;
 
+/**
+ * Deadline task to store the deadline date/time
+ */
+
 public class Deadline extends Task {
     String start;
     LocalDateTime startDate;
 
+    /**
+     * Deadline Constructor
+     *
+     * @param description task that is meant to be done
+     * @param isDone status of whether task has been completed
+     * @param start string representing start date
+     */
     public Deadline(String description, boolean isDone, String start) {
         super(description, isDone);
         String[] startTemp = start.split(" ");
@@ -17,11 +28,21 @@ public class Deadline extends Task {
         startDate = LocalDate.parse(startTemp[0]).atTime(t);
     }
 
+    /**
+     * prints task
+     *
+     * @return String of formatted Task
+     */
     @Override
     public String printTask() {
         return "[D]" + this.getStatus() + " " + this.description + " "  + "(by: " + printDate(startDate) +  ")";
     };
 
+    /**
+     * prints Successful adding into TaskList
+     *
+     * @param size number of Task in the taskList
+     */
     @Override
     public void printSuccess(int size) {
         System.out.println("\tDeadlines, shag ah bro ;(.\n\t" +
@@ -30,6 +51,7 @@ public class Deadline extends Task {
     }
 
     public String getStart() {
+
         return this.start;
     }
 

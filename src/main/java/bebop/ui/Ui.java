@@ -1,12 +1,24 @@
 package bebop.ui;
+import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Ui for the Bebop Chatbot, methods to greet/goodbye and readCommands
+ */
 public class Ui {
     Scanner scan;
+
+    /**
+     * Ui Constructor
+     */
     public Ui() {
+
         scan = new Scanner(System.in);
     }
 
+    /**
+     * Welcomes the Guest and explains the format
+     */
     public void welcomeGuest() {
         String logo = "\t _          _\n" +
                 "\t| |        | |\n" +
@@ -23,14 +35,27 @@ public class Ui {
         System.out.println("\tEVENT : event EVENTNAME /from STARTTIME /to ENDTIME");
     }
 
+    /**
+     * adds a divider between commands
+     */
     public void divider() {
+
         System.out.println("\t__________________________________");
     }
 
+    /**
+     * reads the next user input
+     */
     public String readCommand() {
+
         return scan.nextLine();
     }
 
+    /**
+     * error message
+     *
+     * @param m is the error message/fix
+     */
     public void showError(String m) {
         System.out.println("ERROR");
         System.out.println("m");

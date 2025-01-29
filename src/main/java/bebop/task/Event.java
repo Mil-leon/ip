@@ -3,11 +3,24 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+/**
+ * Event task to store the event date/time
+ */
+
 public class Event extends Task{
     String start;
     String end;
     LocalDateTime startDate;
     LocalDateTime endDate;
+
+    /**
+     * Event Constructor
+     *
+     * @param description task that is meant to be done
+     * @param isDone status of whether task has been completed
+     * @param start string representing start date
+     * @param end string representing end date
+     */
     public Event(String description, boolean isDone, String start, String end){
         super(description, isDone);
         this.start = start;
@@ -20,12 +33,22 @@ public class Event extends Task{
         this.endDate = LocalDate.parse(endTemp[0]).atTime(t2);
     }
 
+    /**
+     * prints task
+     *
+     * @return String of formatted Task
+     */
     @Override
     public String printTask() {
         return "[E]" + this.getStatus() + " " + this.description + " "  +
                 "(from: " + super.printDate(startDate) + " to: " + printDate(endDate) + ")";
     };
 
+    /**
+     * prints Successful adding into TaskList
+     *
+     * @param size number of Task in the taskList
+     */
     @Override
     public void printSuccess(int size) {
         System.out.println("\tYippee, hope it's a fun event :D\n\t" +
@@ -34,10 +57,12 @@ public class Event extends Task{
     }
 
     public String getStart() {
+
         return this.start;
     }
 
     public String getEnd() {
+
         return this.end;
     }
 
