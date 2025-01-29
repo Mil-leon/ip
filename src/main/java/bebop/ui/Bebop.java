@@ -7,6 +7,11 @@ import bebop.command.Parser;
 import bebop.exception.BebopException;
 import bebop.task.TaskList;
 
+/**
+ * A chatbot made to store tasks to be done. A <code>Bebop</code> object allows
+ * you to insert, delete and mark formatted tasks.
+ */
+
 public class Bebop {
 
     private Storage storage;
@@ -14,6 +19,11 @@ public class Bebop {
     private Ui ui;
     private Parser parser;
 
+    /**
+     * Bebop Constructor
+     * @param filePath filepath of the data in format data/Bebop.txt
+     * @throws IOException If the filepath given is invalid
+     */
     public Bebop(String filePath) throws IOException {
         ui = new Ui();
         parser = new Parser();
@@ -22,6 +32,9 @@ public class Bebop {
         tasks = storage.load(tasks);
     }
 
+    /**
+     * Runs the main Bebop program
+     */
     public void run() throws IOException, BebopException {
         ui.welcomeGuest();
         boolean isContinuing = true;

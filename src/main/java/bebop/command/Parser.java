@@ -1,7 +1,16 @@
 package bebop.command;
 
+/**
+ * Parses all the command to the Ui
+ */
 public class Parser {
 
+    /**
+     * parses command string into command type
+     *
+     * @param command command being processed
+     * @return command of Command class
+     */
     public Command parse(String command) {
         String[] inputs = command.split(" ");
         return switch (inputs[0]) {

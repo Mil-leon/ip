@@ -11,14 +11,35 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Adds Todo, Deadline and Event Classes into Tasklist
+ */
+
 public class AddCommand extends Command {
     String type;
     String command;
+
+    /**
+     * AddCommand Constructor
+     *
+     * @param type type of Task added
+     * @param command command being stored
+     */
     public AddCommand(String type, String command) {
         this.type = type;
         this.command = command;
     }
 
+    /**
+     * adds the command into TaskList
+     *
+     * @param tasks Tasklist storing tasks
+     * @param ui Ui to print commands
+     * @param storage stores task into Bebop.txt
+     *
+     * @return boolean if the program will continue or not
+     * @throws BebopException checks for correct command format
+     */
     @Override
     public boolean execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
         if (this.type.equals("t")) {
@@ -69,6 +90,14 @@ public class AddCommand extends Command {
         return true;
     }
 
+    /**
+     * checks if the command is formatted correctly
+     *
+     * @param list list seperated by dates
+     * @param type type of task
+     *
+     * @return boolean if it is correctly formatted
+     */
     public static boolean isFormatted(String[] list, String type) {
         try {
             checkToDo(list, type);
@@ -79,6 +108,12 @@ public class AddCommand extends Command {
         }
     }
 
+    /**
+     * checks if the command is formatted correctly
+     *
+     * @param arr list seperated by dates
+     * @param s type of task
+     */
     public static void checkToDo(String[] arr, String s) throws BebopException{
         if (arr.length <= 1) {
             switch (s) {
@@ -95,6 +130,13 @@ public class AddCommand extends Command {
         }
     }
 
+    /**
+     * checks if the dateTime is formatted correctly
+     *
+     * @param dateTimeStr formatted dateTime
+     *
+     * @return boolean if it is correctly formatted
+     */
     public static boolean isValidLocalDateTime(String dateTimeStr) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         try {

@@ -10,13 +10,29 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Storage class that loads and deloads task from TaskList to Bebop.txt
+ */
+
 public class Storage {
     String fileName;
 
+    /**
+     * Storage Constructor
+     *
+     * @param fileName fileName of the text file
+     */
     public Storage(String fileName) {
         this.fileName = fileName;
     }
 
+    /**
+     * loads files into taskList
+     *
+     * @param tasks Takes in an empty taskList
+     * @throws IOException if the file could not be created
+     * @return TaskList after adding all the items in Bebop.txt
+     */
     public TaskList load(TaskList tasks) throws IOException {
         File directory = new File("data");
         String[] todos;
@@ -58,6 +74,13 @@ public class Storage {
         fw.close();
         return tasks;
     }
+
+    /**
+     * loads file into TaskList in the end
+     *
+     * @param tasks Takes in an empty taskList
+     * @throws IOException if the file could not be created
+     */
 
     public void deload(TaskList tasks) throws IOException {
         FileWriter fw = new FileWriter(this.fileName, false);
