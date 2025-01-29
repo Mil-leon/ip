@@ -13,6 +13,7 @@ public class Parser {
             case "deadline" -> new AddCommand("d", command);
             case "event" -> new AddCommand("e", command);
             case "delete" -> new DeleteCommand(command);
+            case "find" -> new FindCommand(command);
             default -> new InvalidCommand();
         };
     }
