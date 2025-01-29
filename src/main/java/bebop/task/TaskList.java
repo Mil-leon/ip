@@ -48,4 +48,15 @@ public class TaskList {
     public int size() {
         return this.size;
     }
+
+    public void findTask(String taskName) {
+        int count = 0;
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).description.contains(taskName)) {
+                System.out.println(tasks.get(i).printTask());
+                count++;
+            }
+        }
+        if (count == 0) System.out.println("Task not found");
+    }
 }
