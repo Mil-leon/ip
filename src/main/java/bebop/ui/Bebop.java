@@ -20,9 +20,9 @@ public class Bebop {
     private Parser parser;
 
     /**
-     * Bebop Constructor
-     * @param filePath filepath of the data in format data/Bebop.txt
-     * @throws IOException If the filepath given is invalid
+     * Bebop Constructor.
+     * @param filePath filepath of the data in format data/Bebop.txt.
+     * @throws IOException If the filepath given is invalid.
      */
     public Bebop(String filePath) throws IOException {
         ui = new Ui();
@@ -33,7 +33,7 @@ public class Bebop {
     }
 
     /**
-     * Runs the main Bebop program
+     * Runs the main Bebop program.
      */
     public void run() throws IOException, BebopException {
         ui.welcomeGuest();
@@ -54,6 +54,5 @@ public class Bebop {
     public static void main(String[] args) throws BebopException, IOException {
         new Bebop("data/Bebop.txt").run();
     }
-
 
 }

@@ -2,15 +2,15 @@ package bebop.task;
 import java.util.ArrayList;
 
 /**
- * TaskList to store all the tasks
+ * TaskList to store all the tasks.
  */
 
 public class TaskList {
-    ArrayList<Task> tasks;
-    int size;
+    private final ArrayList<Task> tasks;
+    private int size;
 
     /**
-     * TaskList constructor
+     * TaskList constructor.
      */
     public TaskList() {
         this.tasks = new ArrayList<>();
@@ -18,7 +18,7 @@ public class TaskList {
     }
 
     /**
-     * prints all the task in TaskList
+     * prints all the task in TaskList.
      */
     public void printAllTask() {
         int i = 0;
@@ -42,9 +42,9 @@ public class TaskList {
     }
 
     /**
-     * adds Task to the taskList
+     * adds Task to the taskList.
      *
-     * @param t task to be added
+     * @param t task to be added.
      */
     public void addTask(Task t) {
         tasks.add(t);
@@ -52,9 +52,9 @@ public class TaskList {
     }
 
     /**
-     * get Task of the specified index
+     * get Task of the specified index.
      *
-     * @param index index of task
+     * @param index index of task.
      */
     public Task getTask(int index) {
 
@@ -62,9 +62,9 @@ public class TaskList {
     }
 
     /**
-     * deletes Task of the specified index
+     * deletes Task of the specified index.
      *
-     * @param index index of task
+     * @param index index of task.
      */
     public void deleteTask(int index) {
         tasks.remove(index);
@@ -72,15 +72,19 @@ public class TaskList {
     }
 
     /**
-     * returns size of the TaskList
+     * returns size of the TaskList.
      *
-     * @return size of the TaskList
+     * @return size of the TaskList.
      */
     public int size() {
-
         return this.size;
     }
 
+    /**
+     * finds the Task
+     *
+     * @param taskName name of the Task.
+     */
     public void findTask(String taskName) {
         int count = 0;
         for (int i = 0; i < tasks.size(); i++) {
@@ -89,6 +93,8 @@ public class TaskList {
                 count++;
             }
         }
-        if (count == 0) System.out.println("Task not found");
+        if (count == 0) {
+            System.out.println("Task not found");
+        }
     }
 }

@@ -1,37 +1,39 @@
 package bebop.ui;
-import bebop.task.Deadline;
-import bebop.task.Task;
-import bebop.task.Event;
-import bebop.task.TaskList;
-import bebop.task.Todo;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+import bebop.task.Deadline;
+import bebop.task.Event;
+import bebop.task.TaskList;
+import bebop.task.Todo;
+
+
+
 /**
- * Storage class that loads and deloads task from TaskList to Bebop.txt
+ * Storage class that loads and deloads task from TaskList to Bebop.txt.
  */
 
 public class Storage {
-    String fileName;
+    private final String fileName;
 
     /**
-     * Storage Constructor
+     * Storage Constructor.
      *
-     * @param fileName fileName of the text file
+     * @param fileName fileName of the text file.
      */
     public Storage(String fileName) {
         this.fileName = fileName;
     }
 
     /**
-     * loads files into taskList
+     * loads files into taskList.
      *
-     * @param tasks Takes in an empty taskList
-     * @throws IOException if the file could not be created
-     * @return TaskList after adding all the items in Bebop.txt
+     * @param tasks Takes in an empty taskList.
+     * @return TaskList after adding all the items in Bebop.txt.
+     * @throws IOException if the file could not be created.
      */
     public TaskList load(TaskList tasks) throws IOException {
         File directory = new File("data");
@@ -69,6 +71,9 @@ public class Storage {
                 continue;
             case "E":
                 tasks.addTask(new Event(tempStr[2], isDone, tempStr[3], tempStr[4]));
+                continue;
+            default:
+                break;
             }
         }
         fw.close();
@@ -76,10 +81,10 @@ public class Storage {
     }
 
     /**
-     * loads file into TaskList in the end
+     * loads file into TaskList in the end.
      *
-     * @param tasks Takes in an empty taskList
-     * @throws IOException if the file could not be created
+     * @param tasks Takes in an empty taskList.
+     * @throws IOException if the file could not be created.
      */
 
     public void deload(TaskList tasks) throws IOException {
@@ -91,7 +96,8 @@ public class Storage {
                 fw.write("D | " + d.getStatus() + " | " + d.getDescription() + " | " + d.getStart() + "\n");
             } else {
                 Event e = (Event) tasks.getTask(i);
-                fw.write("E | " + e.getStatus() + " | " + e.getDescription() + " | " + e.getStart() + " | " + e.getEnd() + "\n");
+                fw.write("E | " + e.getStatus() + " | " + e.getDescription() + " | " + e.getStart() + " | "
+                        + e.getEnd() + "\n");
             }
         }
         fw.close();

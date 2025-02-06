@@ -1,24 +1,25 @@
 package bebop.task;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import static java.time.LocalDate.now;
+
 
 /**
- * Deadline task to store the deadline date/time
+ * Deadline task to store the deadline date/time.
  */
 
 public class Deadline extends Task {
-    String start;
-    LocalDateTime startDate;
+    private final String start;
+    private final LocalDateTime startDate;
 
     /**
-     * Deadline Constructor
+     * Deadline Constructor.
      *
-     * @param description task that is meant to be done
-     * @param isDone status of whether task has been completed
-     * @param start string representing start date
+     * @param description task that is meant to be done.
+     * @param isDone status of whether task has been completed.
+     * @param start string representing start date.
      */
     public Deadline(String description, boolean isDone, String start) {
         super(description, isDone);
@@ -29,13 +30,13 @@ public class Deadline extends Task {
     }
 
     /**
-     * prints task
+     * prints task.
      *
-     * @return String of formatted Task
+     * @return String of formatted Task.
      */
     @Override
     public String printTask() {
-        return "[D]" + this.getStatus() + " " + this.description + " "  + "(by: " + printDate(startDate) +  ")";
+        return "[D]" + this.getStatus() + " " + this.description + " " + "(by: " + printDate(startDate) + ")";
     };
 
     /**
@@ -45,13 +46,12 @@ public class Deadline extends Task {
      */
     @Override
     public void printSuccess(int size) {
-        System.out.println("\tDeadlines, shag ah bro ;(.\n\t" +
-                this.printTask());
+        System.out.println("\tDeadlines, shag ah bro ;(.\n\t"
+                + this.printTask());
         System.out.println("\t" + size + " tasks to be done");
     }
 
     public String getStart() {
-
         return this.start;
     }
 

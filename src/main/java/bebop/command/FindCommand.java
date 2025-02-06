@@ -5,13 +5,27 @@ import bebop.task.TaskList;
 import bebop.ui.Storage;
 import bebop.ui.Ui;
 
+/**
+ * Finds commands with matching string.
+ */
+
 public class FindCommand extends Command {
-    String command;
+    private final String command;
 
     public FindCommand(String command) {
         this.command = command;
     }
 
+    /**
+     * Find tasks with matching names.
+     *
+     * @param tasks Tasklist storing tasks.
+     * @param ui Ui to print commands.
+     * @param storage stores task into Bebop.txt.
+     *
+     * @return boolean if the program will continue or not.
+     * @throws BebopException checks for correct command format.
+     */
     public boolean execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
         String[] input = command.split(" ");
         if (input.length != 2) {

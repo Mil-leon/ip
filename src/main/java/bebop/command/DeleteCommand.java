@@ -5,29 +5,29 @@ import bebop.ui.Storage;
 import bebop.ui.Ui;
 
 /**
- * Deletes tasks from the tasklist
+ * Deletes tasks from the tasklist.
  */
 public class DeleteCommand extends Command {
-    String command;
+    private final String command;
 
     /**
-     * DeleteCommand Constructor
+     * DeleteCommand Constructor.
      *
-     * @param command command being deleted
+     * @param command command being deleted.
      */
     public DeleteCommand(String command) {
         this.command = command;
     }
 
     /**
-     * deletes the command from TaskList
+     * deletes the command from TaskList.
      *
-     * @param tasks Tasklist storing tasks
-     * @param ui Ui to print commands
-     * @param storage stores task into Bebop.txt
+     * @param tasks Tasklist storing tasks.
+     * @param ui Ui to print commands.
+     * @param storage stores task into Bebop.txt.
      *
-     * @return boolean if the program will continue or not
-     * @throws BebopException checks for correct command format
+     * @return boolean if the program will continue or not.
+     * @throws BebopException checks for correct command format.
      */
     @Override
     public boolean execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
@@ -37,8 +37,8 @@ public class DeleteCommand extends Command {
             throw new BebopException("\tDelete only accepts valid integers");
         }
         int taskNum = Integer.parseInt(input[1]);
-        System.out.println("\tAlright! Congrats on finishing your task:)\n\t" +
-                tasks.getTask(taskNum - 1).printTask());
+        System.out.println("\tAlright! Congrats on finishing your task:)\n\t"
+                + tasks.getTask(taskNum - 1).printTask());
         tasks.deleteTask(taskNum - 1);
         return true;
     }
