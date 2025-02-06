@@ -4,24 +4,24 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 /**
- * Event task to store the event date/time
+ * Event task to store the event date/time.
  */
 
-public class Event extends Task{
-    String start;
-    String end;
-    LocalDateTime startDate;
-    LocalDateTime endDate;
+public class Event extends Task {
+    private final String start;
+    private final String end;
+    private final LocalDateTime startDate;
+    private final LocalDateTime endDate;
 
     /**
-     * Event Constructor
+     * Event Constructor.
      *
-     * @param description task that is meant to be done
-     * @param isDone status of whether task has been completed
-     * @param start string representing start date
-     * @param end string representing end date
+     * @param description task that is meant to be done.
+     * @param isDone status of whether task has been completed.
+     * @param start string representing start date.
+     * @param end string representing end date.
      */
-    public Event(String description, boolean isDone, String start, String end){
+    public Event(String description, boolean isDone, String start, String end) {
         super(description, isDone);
         this.start = start;
         this.end = end;
@@ -34,14 +34,14 @@ public class Event extends Task{
     }
 
     /**
-     * prints task
+     * prints task.
      *
-     * @return String of formatted Task
+     * @return String of formatted Task.
      */
     @Override
     public String printTask() {
-        return "[E]" + this.getStatus() + " " + this.description + " "  +
-                "(from: " + super.printDate(startDate) + " to: " + printDate(endDate) + ")";
+        return "[E]" + this.getStatus() + " " + this.description + " "
+                + "(from: " + super.printDate(startDate) + " to: " + printDate(endDate) + ")";
     };
 
     /**
@@ -51,18 +51,16 @@ public class Event extends Task{
      */
     @Override
     public void printSuccess(int size) {
-        System.out.println("\tYippee, hope it's a fun event :D\n\t" +
-                this.printTask());
+        System.out.println("\tYippee, hope it's a fun event :D\n\t"
+                + this.printTask());
         System.out.println("\t" + size + " tasks to be done");
     }
 
     public String getStart() {
-
         return this.start;
     }
 
     public String getEnd() {
-
         return this.end;
     }
 

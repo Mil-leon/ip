@@ -1,12 +1,11 @@
 package bebop.ui;
-import java.io.IOException;
 import java.util.Scanner;
 
 /**
- * Ui for the Bebop Chatbot, methods to greet/goodbye and readCommands
+ * Ui for the Bebop Chatbot, methods to greet/goodbye and readCommands.
  */
 public class Ui {
-    Scanner scan;
+    private final Scanner scan;
 
     /**
      * Ui Constructor
@@ -19,15 +18,15 @@ public class Ui {
      * Welcomes the Guest and explains the format
      */
     public void welcomeGuest() {
-        String logo = "\t _          _\n" +
-                "\t| |        | |\n" +
-                "\t| |__   ___| |__   ___  _ __\n" +
-                "\t| '_ \\ / _ \\ '_ \\ / _ \\| '_ \\\n" +
-                "\t| |_) |  __/ |_) | (_) | |_) |\n" +
-                "\t|_.__/ \\___|_.__/ \\___/| .__/\n" +
-                "\t                       | |\n" +
-                "\t                       |_|" + "\n\tWhat will you be doing today?\n" +
-                "\t__________________________________";
+        String logo = "\t _          _\n"
+                + "\t| |        | |\n"
+                + "\t| |__   ___| |__   ___  _ __\n"
+                + "\t| '_ \\ / _ \\ '_ \\ / _ \\| '_ \\\n"
+                + "\t| |_) |  __/ |_) | (_) | |_) |\n"
+                + "\t|_.__/ \\___|_.__/ \\___/| .__/\n"
+                + "\t                       | |\n"
+                + "\t                       |_|" + "\n\tWhat will you be doing today?\n"
+                + "\t__________________________________";
         System.out.println("\tHowdy! How's it going?\n" + logo);
         System.out.println("\tTODO : todo EVENTNAME");
         System.out.println("\tDEADLINE : deadline EVENTNAME /by ENDTIME");
@@ -35,15 +34,14 @@ public class Ui {
     }
 
     /**
-     * adds a divider between commands
+     * adds a divider between commands.
      */
     public void divider() {
-
         System.out.println("\t__________________________________");
     }
 
     /**
-     * reads the next user input
+     * reads the next user input.
      */
     public String readCommand() {
 
@@ -51,9 +49,9 @@ public class Ui {
     }
 
     /**
-     * error message
+     * error message.
      *
-     * @param m is the error message/fix
+     * @param m is the error message/fix.
      */
     public void showError(String m) {
         System.out.println("ERROR");

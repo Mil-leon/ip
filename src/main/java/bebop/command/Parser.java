@@ -1,30 +1,30 @@
 package bebop.command;
 
 /**
- * Parses all the command to the Ui
+ * Parses all the command to the Ui.
  */
 public class Parser {
 
     /**
-     * parses command string into command type
+     * parses command string into command type.
      *
-     * @param command command being processed
-     * @return command of Command class
+     * @param command command being processed.
+     * @return command of Command class.
      */
     public Command parse(String command) {
         String[] inputs = command.split(" ");
-        return switch (inputs[0]) {
-            case "bye" -> new ExitCommand();
-            case "list" -> new ListCommand();
-            case "mark" -> new MarkCommand(true, command);
-            case "unmark" -> new MarkCommand(false, command);
-            case "todo" -> new AddCommand("t", command);
-            case "deadline" -> new AddCommand("d", command);
-            case "event" -> new AddCommand("e", command);
-            case "delete" -> new DeleteCommand(command);
-            case "find" -> new FindCommand(command);
-            default -> new InvalidCommand();
-        };
+        switch (inputs[0]) {
+        case "bye": return new ExitCommand();
+        case "list": return new ListCommand();
+        case "mark": return new MarkCommand(true, command);
+        case "unmark": return new MarkCommand(false, command);
+        case "todo": return new AddCommand("t", command);
+        case "deadline": return new AddCommand("d", command);
+        case "event": return new AddCommand("e", command);
+        case "delete": return new DeleteCommand(command);
+        case "find": return new FindCommand(command);
+        default: return new InvalidCommand();
+        }
     }
 
 

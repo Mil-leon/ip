@@ -1,4 +1,8 @@
 package bebop.command;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 import bebop.exception.BebopException;
 import bebop.task.Deadline;
 import bebop.task.Event;
@@ -7,23 +11,20 @@ import bebop.task.Todo;
 import bebop.ui.Storage;
 import bebop.ui.Ui;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 
 /**
- * Adds Todo, Deadline and Event Classes into Tasklist
+ * Adds Todo, Deadline and Event Classes into Tasklist.
  */
 
 public class AddCommand extends Command {
-    String type;
-    String command;
+    private final String type;
+    private final String command;
 
     /**
-     * AddCommand Constructor
+     * AddCommand Constructor.
      *
-     * @param type type of Task added
-     * @param command command being stored
+     * @param type type of Task added.
+     * @param command command being stored.
      */
     public AddCommand(String type, String command) {
         this.type = type;
@@ -31,14 +32,14 @@ public class AddCommand extends Command {
     }
 
     /**
-     * adds the command into TaskList
+     * adds the command into TaskList.
      *
-     * @param tasks Tasklist storing tasks
-     * @param ui Ui to print commands
-     * @param storage stores task into Bebop.txt
+     * @param tasks Tasklist storing tasks.
+     * @param ui Ui to print commands.
+     * @param storage stores task into Bebop.txt.
      *
-     * @return boolean if the program will continue or not
-     * @throws BebopException checks for correct command format
+     * @return boolean if the program will continue or not.
+     * @throws BebopException checks for correct command format.
      */
     @Override
     public boolean execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
@@ -91,12 +92,12 @@ public class AddCommand extends Command {
     }
 
     /**
-     * checks if the command is formatted correctly
+     * checks if the command is formatted correctly.
      *
-     * @param list list seperated by dates
-     * @param type type of task
+     * @param list list seperated by dates.
+     * @param type type of task.
      *
-     * @return boolean if it is correctly formatted
+     * @return boolean if it is correctly formatted.
      */
     public static boolean isFormatted(String[] list, String type) {
         try {
@@ -109,33 +110,37 @@ public class AddCommand extends Command {
     }
 
     /**
-     * checks if the command is formatted correctly
+     * checks if the command is formatted correctly.
      *
-     * @param arr list seperated by dates
-     * @param s type of task
-     */
-    public static void checkToDo(String[] arr, String s) throws BebopException{
+     * @param arr list seperated by dates.
+     * @param s type of task.
+     * */
+    public static void checkToDo(String[] arr, String s) throws BebopException {
         if (arr.length <= 1) {
             switch (s) {
             case "t":
-                throw new BebopException("\tPlease give a valid todo format: " +
-                        "\"todo EVENTNAME\"");
+                throw new BebopException("\tPlease give a valid todo format: "
+                        + "\"todo EVENTNAME\"");
             case "d":
-                throw new BebopException("\tPlease give a valid deadline format: " +
-                        "\"deadline EVENTNAME /by ENDTIME\"");
+                throw new BebopException("\tPlease give a valid deadline format: "
+                        + "\"deadline EVENTNAME /by ENDTIME\"");
             case "e":
-                throw new BebopException("\tPlease give a valid event format: " +
-                        "\"event EVENTNAME /from STARTTIME /to ENDTIME\"" );
+                throw new BebopException("\tPlease give a valid event format: "
+                        + "\"event EVENTNAME /from STARTTIME /to ENDTIME\"");
+            default:
+                break;
             }
+
+
         }
     }
 
     /**
-     * checks if the dateTime is formatted correctly
+     * checks if the dateTime is formatted correctly.
      *
-     * @param dateTimeStr formatted dateTime
+     * @param dateTimeStr formatted dateTime.
      *
-     * @return boolean if it is correctly formatted
+     * @return boolean if it is correctly formatted.
      */
     public static boolean isValidLocalDateTime(String dateTimeStr) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -146,4 +151,5 @@ public class AddCommand extends Command {
             return false;
         }
     }
+
 }

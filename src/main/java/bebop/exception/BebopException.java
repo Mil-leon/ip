@@ -1,7 +1,7 @@
 package bebop.exception;
 
 /**
- * Exception for Bebop
+ * Exception for Bebop.
  */
 public class BebopException extends Exception {
     public BebopException(String m) {

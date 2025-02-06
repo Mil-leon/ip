@@ -5,19 +5,19 @@ import bebop.ui.Storage;
 import bebop.ui.Ui;
 
 /**
- * Marks/Unmark item as done
+ * Marks/Unmark item as done.
  */
 
 public class MarkCommand extends Command {
-    int index;
-    boolean isDone;
-    boolean isValid;
+    private int index;
+    private final boolean isDone;
+    private final boolean isValid;
 
     /**
-     * MarkCommand Constructor
+     * MarkCommand Constructor.
      *
-     * @param isDone status of the task
-     * @param command command being changed
+     * @param isDone status of the task.
+     * @param command command being changed.
      */
     public MarkCommand(Boolean isDone, String command) {
         String[] temp = command.split(" ");
@@ -27,14 +27,14 @@ public class MarkCommand extends Command {
     }
 
     /**
-     * command that marks/unmark the Task
+     * command that marks/unmark the Task.
      *
-     * @param tasks Tasklist storing tasks
-     * @param ui Ui to print commands
-     * @param storage stores task into Bebop.txt
+     * @param tasks Tasklist storing tasks.
+     * @param ui Ui to print commands.
+     * @param storage stores task into Bebop.txt.
      *
-     * @return boolean if the program will continue or not
-     * @throws BebopException checks for correct command format
+     * @return boolean if the program will continue or not.
+     * @throws BebopException checks for correct command format.
      */
     @Override
     public boolean execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
