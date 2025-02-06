@@ -12,7 +12,6 @@ public class Ui {
      * Ui Constructor
      */
     public Ui() {
-
         scan = new Scanner(System.in);
     }
 
