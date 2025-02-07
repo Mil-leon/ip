@@ -30,17 +30,19 @@ public class DeleteCommand extends Command {
      * @throws BebopException checks for correct command format.
      */
     @Override
-    public boolean execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
         String[] input = this.command.split(" ");
+        String output = "";
         if (input.length == 1 || input.length > 2 || !isInteger(input[1])
                 || Integer.parseInt(input[1]) > (tasks.size())) {
-            throw new BebopException("\tDelete only accepts valid integers");
+            output = "Delete only accepts valid integers";
+            return output;
         }
         int taskNum = Integer.parseInt(input[1]);
-        System.out.println("\tAlright! Congrats on finishing your task:)\n\t"
-                + tasks.getTask(taskNum - 1).printTask());
+        output = "Alright! Congrats on finishing your task:)\n\t"
+                + tasks.getTask(taskNum - 1).printTask();
         tasks.deleteTask(taskNum - 1);
-        return true;
+        return output;
     }
 
 }

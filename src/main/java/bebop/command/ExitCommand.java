@@ -22,8 +22,7 @@ public class ExitCommand extends Command {
      * @throws BebopException checks for correct command format.
      */
     @Override
-    public boolean execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
-        System.out.println("\tHave a nice day :D, see you soon!");
-        return false;
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
+        return "Have a nice day :D, see you soon!";
     }
 }

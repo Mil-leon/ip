@@ -21,8 +21,7 @@ public class ListCommand extends Command {
      * @throws BebopException checks for correct command format.
      */
     @Override
-    public boolean execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
-        tasks.printAllTask();
-        return true;
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
+        return tasks.printAllTask();
     }
 }

@@ -50,10 +50,9 @@ public class Event extends Task {
      * @param size number of Task in the taskList
      */
     @Override
-    public void printSuccess(int size) {
-        System.out.println("\tYippee, hope it's a fun event :D\n\t"
-                + this.printTask());
-        System.out.println("\t" + size + " tasks to be done");
+    public String printSuccess(int size) {
+        return "Yippee, hope it's a fun event :D\n"
+                + this.printTask() + "\n" + size + " tasks to be done";
     }
 
     public String getStart() {

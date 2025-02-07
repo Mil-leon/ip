@@ -1,3 +1,5 @@
+package bebop.ui;
+
 import javafx.application.Application;
 
 /**

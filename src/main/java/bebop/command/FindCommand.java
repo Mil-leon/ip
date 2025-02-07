@@ -26,13 +26,15 @@ public class FindCommand extends Command {
      * @return boolean if the program will continue or not.
      * @throws BebopException checks for correct command format.
      */
-    public boolean execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
         String[] input = command.split(" ");
+        String output = "";
         if (input.length != 2) {
-            throw new BebopException("Invalid find command, needs a subject to find");
+            output = "Invalid find command, needs a subject to find";
+            return output;
         }
         tasks.findTask(input[1]);
-        return true;
+        return output;
     }
 
 }

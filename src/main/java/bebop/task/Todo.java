@@ -33,10 +33,9 @@ public class Todo extends Task {
      * @param size number of Task in the taskList.
      */
     @Override
-    public void printSuccess(int size) {
-        System.out.println("\tYou got it buddy, get it done quick :D\n\t"
-                + this.printTask());
-        System.out.println("\t" + size + " tasks to be done");
+    public String printSuccess(int size) {
+        return "You got it buddy, get it done quick :D\n"
+                + this.printTask() + "\n" + size + " tasks to be done";
     }
 
 }

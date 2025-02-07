@@ -40,7 +40,7 @@ public abstract class Task {
 
     public abstract String printTask();
 
-    public abstract void printSuccess(int size);
+    public abstract String printSuccess(int size);
 
     /**
      * prints the date the task is associated with.

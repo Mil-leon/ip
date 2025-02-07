@@ -20,13 +20,15 @@ public class TaskList {
     /**
      * prints all the task in TaskList.
      */
-    public void printAllTask() {
+    public String printAllTask() {
+        StringBuilder output = new StringBuilder();
         int i = 0;
         for (Task task : tasks) {
-            System.out.println("\t" + (i + 1) + " " + task.printTask());
+            output.append(i + 1).append(" ").append(task.printTask());
             i++;
         }
-        System.out.println("\t__________________________________");
+        output.append("__________________________________");
+        return output.toString();
     }
 
     public void setTaskDone(int index) {
@@ -57,7 +59,6 @@ public class TaskList {
      * @param index index of task.
      */
     public Task getTask(int index) {
-
         return tasks.get(index);
     }
 
@@ -85,16 +86,16 @@ public class TaskList {
      *
      * @param taskName name of the Task.
      */
-    public void findTask(String taskName) {
-        int count = 0;
+    public String findTask(String taskName) {
+        StringBuilder output = new StringBuilder();
         for (int i = 0; i < tasks.size(); i++) {
             if (tasks.get(i).description.contains(taskName)) {
-                System.out.println(tasks.get(i).printTask());
-                count++;
+                output.append(tasks.get(i).printTask()).append("\n");
             }
         }
-        if (count == 0) {
-            System.out.println("Task not found");
+        if (output.length() == 0) {
+            return "Task not found";
         }
+        return output.toString();
     }
 }

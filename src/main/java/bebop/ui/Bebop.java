@@ -5,6 +5,7 @@ import java.io.IOException;
 import bebop.command.Command;
 import bebop.command.Parser;
 import bebop.exception.BebopException;
+import bebop.task.Task;
 import bebop.task.TaskList;
 
 /**
@@ -35,24 +36,39 @@ public class Bebop {
     /**
      * Runs the main Bebop program.
      */
-    public void run() throws IOException, BebopException {
-        ui.welcomeGuest();
-        boolean isContinuing = true;
-        try {
-            while (isContinuing) {
-                String command = ui.readCommand();
-                ui.divider();
-                Command c = parser.parse(command);
-                isContinuing = c.execute(tasks, ui, storage);
-            }
-        } catch (BebopException e) {
-            System.out.println(e.getMessage());
-        }
-        storage.deload(tasks);
-    }
+//    public void run() throws IOException, BebopException {
+//        ui.welcomeGuest();
+//        boolean isContinuing = true;
+//        try {
+//            while (isContinuing) {
+//                String command = ui.readCommand();
+//                ui.divider();
+//                Command c = parser.parse(command);
+//                String isContinuing = c.execute(tasks, ui, storage);
+//            }
+//        } catch (BebopException e) {
+//            System.out.println(e.getMessage());
+//        }
+//        storage.deload(tasks);
+//    }
 
     public static void main(String[] args) throws BebopException, IOException {
-        new Bebop("data/Bebop.txt").run();
+        new Bebop("data/Bebop.txt");
     }
 
+    public String getResponse(String input) {
+        return "Duke heard: " + input;
+    }
+    public Parser getParser() {
+        return parser;
+    }
+    public TaskList getTaskList() {
+        return tasks;
+    }
+    public Ui getUi() {
+        return ui;
+    }
+    public Storage getStorage() {
+        return storage;
+    }
 }

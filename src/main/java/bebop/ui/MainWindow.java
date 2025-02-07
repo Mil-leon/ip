@@ -1,3 +1,8 @@
+package bebop.ui;
+
+import bebop.command.Command;
+import bebop.exception.BebopException;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -5,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+
 /**
  * Controller for the main GUI.
  */
@@ -18,7 +24,7 @@ public class MainWindow extends AnchorPane {
     @FXML
     private Button sendButton;
 
-    private Duke duke;
+    private Bebop bebop;
 
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
     private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
@@ -28,9 +34,9 @@ public class MainWindow extends AnchorPane {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
     }
 
-    /** Injects the Duke instance */
-    public void setDuke(Duke d) {
-        duke = d;
+    /** Injects the Bebop instance */
+    public void setBebop(Bebop b) {
+        bebop = b;
     }
 
     /**
@@ -38,13 +44,18 @@ public class MainWindow extends AnchorPane {
      * the dialog container. Clears the user input after processing.
      */
     @FXML
-    private void handleUserInput() {
+    private void handleUserInput() throws BebopException {
         String input = userInput.getText();
-        String response = duke.getResponse(input);
+        Command c = bebop.getParser().parse(input);
+        String output = c.execute(bebop.getTaskList(), bebop.getUi(), bebop.getStorage());
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
+                DialogBox.getBebopDialog(output, dukeImage)
         );
         userInput.clear();
+        if (output.equals("Have a nice day :D, see you soon!")) {
+            Platform.exit();
+            System.exit(0);
+        }
     }
 }

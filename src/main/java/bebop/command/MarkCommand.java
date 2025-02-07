@@ -37,19 +37,20 @@ public class MarkCommand extends Command {
      * @throws BebopException checks for correct command format.
      */
     @Override
-    public boolean execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
+        String output = "";
         if (!isValid || index > tasks.size()) {
-            throw new BebopException("\t Mark/Unmark command can only be done with an integer index");
+            output = "Mark/Unmark command can only be done with an integer index";
         }
         if (this.isDone) {
             tasks.setTaskDone(this.index);
-            System.out.println("\tGood Job! I've marked the task as done!\n\t");
+            output = "Good Job! I've marked the task as done!";
         } else {
             tasks.setTaskNotDone(this.index);
-            System.out.println("\tAlright! Let's get this done soon :)\n\t");
+            output = "Alright! Let's get this done soon :)";
         }
-        tasks.printTask(index);
-        return true;
+
+        return tasks.size() + " " + output;
     }
 
 }
