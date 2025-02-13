@@ -33,25 +33,6 @@ public class Bebop {
         tasks = storage.load(tasks);
     }
 
-    /**
-     * Runs the main Bebop program.
-     */
-//    public void run() throws IOException, BebopException {
-//        ui.welcomeGuest();
-//        boolean isContinuing = true;
-//        try {
-//            while (isContinuing) {
-//                String command = ui.readCommand();
-//                ui.divider();
-//                Command c = parser.parse(command);
-//                String isContinuing = c.execute(tasks, ui, storage);
-//            }
-//        } catch (BebopException e) {
-//            System.out.println(e.getMessage());
-//        }
-//        storage.deload(tasks);
-//    }
-
     public static void main(String[] args) throws BebopException, IOException {
         new Bebop("data/Bebop.txt");
     }
