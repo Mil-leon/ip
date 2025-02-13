@@ -28,6 +28,7 @@ public class FindCommand extends Command {
      */
     public String execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
         String[] input = command.split(" ");
+        assert input.length > 0;
         String output = "";
         if (input.length != 2) {
             output = "Invalid find command, needs a subject to find";

@@ -33,10 +33,12 @@ public class TaskList {
 
     public void setTaskDone(int index) {
         this.tasks.get(index).markDone();
+        assert this.tasks.get(index).isDone;
     }
 
     public void setTaskNotDone(int index) {
-        this.tasks.get(index).markDone();
+        this.tasks.get(index).unmarkDone();
+        assert !this.tasks.get(index).isDone;
     }
 
     public void printTask(int index) {

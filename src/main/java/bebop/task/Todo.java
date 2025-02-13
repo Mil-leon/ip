@@ -13,7 +13,6 @@ public class Todo extends Task {
      * @param isDone status of whether task has been completed.
      */
     public Todo(String description, Boolean isDone) {
-
         super(description, isDone);
     }
 
