@@ -49,7 +49,6 @@ public class MarkCommand extends Command {
             tasks.setTaskNotDone(this.index);
             output = "Alright! Let's get this done soon :)";
         }
-
         return tasks.size() + " " + output;
     }
 

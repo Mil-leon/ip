@@ -45,54 +45,63 @@ public class AddCommand extends Command {
     public String execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
         String output = "";
         if (this.type.equals("t")) {
-            String[] todos = command.split("todo ");
-            if (isFormatted(todos, "t")) {
-                Todo t = new Todo(todos[1], false);
-                tasks.addTask(t);
-                return t.printSuccess(tasks.size());
-            }
-
+            return executeTodo(tasks, this.command);
         } else if (this.type.equals("d")) {
-            String[] todos = command.split("deadline ");
-            if (!isFormatted(todos, "d")) {
-                return "Deadline is not formatted correctly";
-            }
-            String[] deadlines = todos[1].split(" /by ");
-            if (!isFormatted(deadlines, "d")) {
-                return "Deadline is not formatted correctly";
-            }
-            if (isValidLocalDateTime(deadlines[1])) {
-                Deadline d = new Deadline(deadlines[0], false, deadlines[1]);
-                tasks.addTask(d);
-                return d.printSuccess(tasks.size());
-            } else {
-                return "Incorrect time format! Valid time format is YYYY-MM-DD HH:MM";
-            }
+            return executeDeadline(tasks, this.command);
         } else {
-            String[] todos = command.split("event ");
-            if (!isFormatted(todos, "e")) {
-                return "Event is not formatted correctly";
-            }
-            String[] deadlines = todos[1].split(" /from ");
-            if (!isFormatted(deadlines, "e")) {
-                return "Event is not formatted correctly";
-            }
-            String[] events = deadlines[1].split(" /to ");
-            if (!isFormatted(events, "e")) {
-                return "Event is not formatted correctly";
-            }
-            if (isValidLocalDateTime(events[0]) && isValidLocalDateTime(events[1])) {
-                Event e = new Event(deadlines[0], false, events[0], events[1]);
-                tasks.addTask(e);
-                return e.printSuccess(tasks.size());
-            } else {
-                return "Incorrect time format! Valid time format is YYYY-MM-DD HH:MM";
-            }
+            return executeEvent(tasks, this.command);
         }
-        // should not reach this
-        return "wrong";
     }
 
+    public static String executeTodo(TaskList tasks, String command) {
+        String[] todos = command.split("todo ");
+        if (isFormatted(todos, "t")) {
+            Todo t = new Todo(todos[1], false);
+            tasks.addTask(t);
+            return t.printSuccess(tasks.size());
+        }
+        return "Todo is formatted wrongly";
+    }
+
+    public static String executeDeadline(TaskList tasks, String command) {
+        String[] todos = command.split("deadline ");
+        if (!isFormatted(todos, "d")) {
+            return "Deadline is not formatted correctly";
+        }
+        String[] deadlines = todos[1].split(" /by ");
+        if (!isFormatted(deadlines, "d")) {
+            return "Deadline is not formatted correctly";
+        }
+        if (isValidLocalDateTime(deadlines[1])) {
+            Deadline d = new Deadline(deadlines[0], false, deadlines[1]);
+            tasks.addTask(d);
+            return d.printSuccess(tasks.size());
+        } else {
+            return "Incorrect time format! Valid time format is YYYY-MM-DD HH:MM";
+        }
+    }
+
+    public static String executeEvent(TaskList tasks, String command) {
+        String[] todos = command.split("event ");
+        if (!isFormatted(todos, "e")) {
+            return "Event is not formatted correctly";
+        }
+        String[] deadlines = todos[1].split(" /from ");
+        if (!isFormatted(deadlines, "e")) {
+            return "Event is not formatted correctly";
+        }
+        String[] events = deadlines[1].split(" /to ");
+        if (!isFormatted(events, "e")) {
+            return "Event is not formatted correctly";
+        }
+        if (isValidLocalDateTime(events[0]) && isValidLocalDateTime(events[1])) {
+            Event e = new Event(deadlines[0], false, events[0], events[1]);
+            tasks.addTask(e);
+            return e.printSuccess(tasks.size());
+        } else {
+            return "Incorrect time format! Valid time format is YYYY-MM-DD HH:MM";
+        }
+    }
     /**
      * checks if the command is formatted correctly.
      *
@@ -132,8 +141,6 @@ public class AddCommand extends Command {
             default:
                 break;
             }
-
-
         }
     }
 
