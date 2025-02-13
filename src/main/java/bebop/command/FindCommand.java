@@ -34,7 +34,7 @@ public class FindCommand extends Command {
             output = "Invalid find command, needs a subject to find";
             return output;
         }
-        tasks.findTask(input[1]);
+        output = tasks.findTask(input[1]);
         return output;
     }
 
