@@ -46,6 +46,7 @@ public class AddCommand extends Command {
         String output = "";
         if (this.type.equals("t")) {
             String[] todos = command.split("todo ");
+            assert todos.length > 0;
             if (isFormatted(todos, "t")) {
                 Todo t = new Todo(todos[1], false);
                 tasks.addTask(t);
@@ -54,6 +55,7 @@ public class AddCommand extends Command {
 
         } else if (this.type.equals("d")) {
             String[] todos = command.split("deadline ");
+            assert todos.length > 0;
             if (!isFormatted(todos, "d")) {
                 return "Deadline is not formatted correctly";
             }
@@ -70,6 +72,7 @@ public class AddCommand extends Command {
             }
         } else {
             String[] todos = command.split("event ");
+            assert todos.length > 0;
             if (!isFormatted(todos, "e")) {
                 return "Event is not formatted correctly";
             }
