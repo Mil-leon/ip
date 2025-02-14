@@ -37,5 +37,4 @@ public class FindCommand extends Command {
         output = tasks.findTask(input[1]);
         return output;
     }
-
 }
