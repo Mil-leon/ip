@@ -23,8 +23,8 @@ public class Deadline extends Task {
      */
     public Deadline(String description, boolean isDone, String start) {
         super(description, isDone);
-        String[] startTemp = start.split(" ");
         this.start = start;
+        String[] startTemp = start.split(" ");
         LocalTime t = LocalTime.parse(startTemp[1]);
         startDate = LocalDate.parse(startTemp[0]).atTime(t);
     }
@@ -36,7 +36,7 @@ public class Deadline extends Task {
      */
     @Override
     public String printTask() {
-        return "[D]" + this.getStatus() + " " + this.description + " " + "(by: " + printDate(startDate) + ")";
+        return "[D]" + this.getStatus() + " " + this.description + " " + "(by: " + printDate(startDate) + ")" + "\n";
     };
 
     /**

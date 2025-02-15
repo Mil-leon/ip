@@ -23,7 +23,7 @@ public class Todo extends Task {
      */
     @Override
     public String printTask() {
-        return "[T]" + this.getStatus() + " " + this.description;
+        return "[T]" + this.getStatus() + " " + this.description + "\n";
     };
 
     /**

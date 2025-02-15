@@ -95,7 +95,7 @@ public class TaskList {
                 output.append(tasks.get(i).printTask()).append("\n");
             }
         }
-        if (output.length() == 0) {
+        if (output.isEmpty()) {
             return "Task not found";
         }
         return output.toString();

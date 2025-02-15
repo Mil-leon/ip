@@ -2,10 +2,8 @@ package bebop.ui;
 
 import java.io.IOException;
 
-import bebop.command.Command;
 import bebop.command.Parser;
 import bebop.exception.BebopException;
-import bebop.task.Task;
 import bebop.task.TaskList;
 
 /**
@@ -33,13 +31,6 @@ public class Bebop {
         tasks = storage.load(tasks);
     }
 
-    public static void main(String[] args) throws BebopException, IOException {
-        new Bebop("data/Bebop.txt");
-    }
-
-    public String getResponse(String input) {
-        return "Duke heard: " + input;
-    }
     public Parser getParser() {
         return parser;
     }

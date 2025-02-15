@@ -11,6 +11,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
+
 /**
  * Controller for the main GUI.
  */
@@ -44,7 +46,7 @@ public class MainWindow extends AnchorPane {
      * the dialog container. Clears the user input after processing.
      */
     @FXML
-    private void handleUserInput() throws BebopException {
+    private void handleUserInput() throws BebopException, IOException {
         String input = userInput.getText();
         Command c = bebop.getParser().parse(input);
         String output = c.execute(bebop.getTaskList(), bebop.getUi(), bebop.getStorage());
@@ -54,6 +56,7 @@ public class MainWindow extends AnchorPane {
         );
         userInput.clear();
         if (output.equals("Have a nice day :D, see you soon!")) {
+            bebop.getStorage().deload(bebop.getTaskList());
             Platform.exit();
             System.exit(0);
         }

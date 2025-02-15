@@ -60,17 +60,17 @@ public class AddCommand extends Command {
             tasks.addTask(t);
             return t.printSuccess(tasks.size());
         }
-        return "Todo is formatted wrongly";
+        return stringFormat("t");
     }
 
     public static String executeDeadline(TaskList tasks, String command) {
         String[] todos = command.split("deadline ");
         if (!isFormatted(todos, "d")) {
-            return "Deadline is not formatted correctly";
+            return stringFormat("d");
         }
         String[] deadlines = todos[1].split(" /by ");
         if (!isFormatted(deadlines, "d")) {
-            return "Deadline is not formatted correctly";
+            return stringFormat("d");
         }
         if (isValidLocalDateTime(deadlines[1])) {
             Deadline d = new Deadline(deadlines[0], false, deadlines[1]);
@@ -84,15 +84,15 @@ public class AddCommand extends Command {
     public static String executeEvent(TaskList tasks, String command) {
         String[] todos = command.split("event ");
         if (!isFormatted(todos, "e")) {
-            return "Event is not formatted correctly";
+            return stringFormat("e");
         }
         String[] deadlines = todos[1].split(" /from ");
         if (!isFormatted(deadlines, "e")) {
-            return "Event is not formatted correctly";
+            return stringFormat("e");
         }
         String[] events = deadlines[1].split(" /to ");
         if (!isFormatted(events, "e")) {
-            return "Event is not formatted correctly";
+            return stringFormat("e");
         }
         if (isValidLocalDateTime(events[0]) && isValidLocalDateTime(events[1])) {
             Event e = new Event(deadlines[0], false, events[0], events[1]);
@@ -102,6 +102,21 @@ public class AddCommand extends Command {
             return "Incorrect time format! Valid time format is YYYY-MM-DD HH:MM";
         }
     }
+
+
+    public static String stringFormat(String format) {
+        if (format.equals("t")) {
+            return "Please give a valid todo format: "
+                    + "\"todo EVENTNAME\"";
+        } else if (format.equals("d")) {
+            return "Please give a valid deadline format: "
+                    + "\"deadline EVENTNAME /by ENDTIME\"";
+        } else {
+            return "Please give a valid event format: "
+                    + "\"event EVENTNAME /from STARTTIME /to ENDTIME\"";
+        }
+    }
+
     /**
      * checks if the command is formatted correctly.
      *

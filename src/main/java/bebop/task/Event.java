@@ -41,7 +41,7 @@ public class Event extends Task {
     @Override
     public String printTask() {
         return "[E]" + this.getStatus() + " " + this.description + " "
-                + "(from: " + super.printDate(startDate) + " to: " + printDate(endDate) + ")";
+                + "(from: " + super.printDate(startDate) + " to: " + printDate(endDate) + ")" + "\n";
     };
 
     /**

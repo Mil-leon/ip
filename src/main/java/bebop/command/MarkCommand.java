@@ -22,7 +22,7 @@ public class MarkCommand extends Command {
     public MarkCommand(Boolean isDone, String command) {
         String[] temp = command.split(" ");
         isValid = temp.length == 2 || isInteger(temp[1]);
-        this.index = isValid ? Integer.parseInt(temp[1]) : -1;
+        this.index = isValid ? Integer.parseInt(temp[1]) - 1 : -1;
         this.isDone = isDone;
     }
 

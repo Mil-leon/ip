@@ -15,8 +15,13 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     private Bebop bebop;
+
     public Main() throws IOException {
-        this.bebop = new Bebop("data/Bebop.txt");
+        try {
+            this.bebop = new Bebop("data/Bebop.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

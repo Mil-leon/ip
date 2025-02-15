@@ -44,7 +44,6 @@ public class Ui {
      * reads the next user input.
      */
     public String readCommand() {
-
         return scan.nextLine();
     }
 
