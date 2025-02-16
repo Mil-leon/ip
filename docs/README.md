@@ -94,14 +94,18 @@ Format - ```bye```
 **Tasks will only be saved in the tasklist if bye is called!!!**
 
 *Example*
-```bye```
+```
+bye
+```
 
 ## find task
 
 Format - ```find TASK```
 
 *Example*
-```find day```
+```
+find day
+```
 
 *Output*
 ```
@@ -115,7 +119,9 @@ Format - ```find TASK```
 Format - ```list```
 
 *Example*
-```list```
+```
+list
+```
 
 *Output*
 ```
