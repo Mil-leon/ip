@@ -41,7 +41,7 @@ public class MarkCommand extends Command {
         try {
             String output = "";
             if (!isValid || index > tasks.size()) {
-                throw new BebopException("\"Mark/Unmark command can only be done with an valid integer index\";");
+                throw new BebopException("\"Mark/Unmark command can only be done with an valid integer index\"");
             }
             if (this.isDone) {
                 tasks.setTaskDone(this.index);
