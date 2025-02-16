@@ -37,13 +37,11 @@ public class Storage {
      */
     public TaskList load(TaskList tasks) throws IOException {
         File directory = new File("data");
-        String[] todos;
-        String[] deadlines;
-        String[] events;
 
         if (!directory.exists()) {
             directory.mkdirs();
         }
+
         File file = new File(directory, "Bebop.txt");
         FileWriter fw = new FileWriter(this.fileName, true);
         // check if the file has any words

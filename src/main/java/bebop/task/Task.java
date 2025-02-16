@@ -49,7 +49,7 @@ public abstract class Task {
      * @return formatted string for the dateTime.
      */
     public String printDate(LocalDateTime date) {
-        return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        return date.format(DateTimeFormatter.ofPattern("MMM-dd-yyyy HH:mm:ss"));
     };
 
     /**

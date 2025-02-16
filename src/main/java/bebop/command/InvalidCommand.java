@@ -20,7 +20,7 @@ public class InvalidCommand extends Command {
      * @throws BebopException checks for correct command format.
      */
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         return "Sorry that's not a valid command :D, please use an appropriate format";
     }
 }

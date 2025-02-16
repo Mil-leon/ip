@@ -2,7 +2,6 @@ package bebop.ui;
 
 import java.io.IOException;
 
-import bebop.exception.BebopException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

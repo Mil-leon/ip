@@ -42,64 +42,84 @@ public class AddCommand extends Command {
      * @throws BebopException checks for correct command format.
      */
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         String output = "";
-        if (this.type.equals("t")) {
-            return executeTodo(tasks, this.command);
-        } else if (this.type.equals("d")) {
-            return executeDeadline(tasks, this.command);
-        } else {
-            return executeEvent(tasks, this.command);
+        try {
+            if (this.type.equals("t")) {
+                return executeTodo(tasks, this.command);
+            } else if (this.type.equals("d")) {
+                return executeDeadline(tasks, this.command);
+            } else {
+                return executeEvent(tasks, this.command);
+            }
+        } catch (BebopException e) {
+            return e.getMessage();
         }
     }
 
-    public static String executeTodo(TaskList tasks, String command) {
-        String[] todos = command.split("todo ");
-        if (isFormatted(todos, "t")) {
-            Todo t = new Todo(todos[1], false);
-            tasks.addTask(t);
-            return t.printSuccess(tasks.size());
+    public static String executeTodo(TaskList tasks, String command) throws BebopException {
+        try {
+            String[] todos = command.split("todo ");
+            if (isFormatted(todos, "t")) {
+                Todo t = new Todo(todos[1], false);
+                tasks.addTask(t);
+                return t.printSuccess(tasks.size());
+            } else {
+                throw new BebopException(stringFormat("t"));
+            }
+        } catch (BebopException b) {
+            return b.getMessage();
         }
-        return stringFormat("t");
+
+
+
     }
 
-    public static String executeDeadline(TaskList tasks, String command) {
+    public static String executeDeadline(TaskList tasks, String command) throws BebopException {
         String[] todos = command.split("deadline ");
         if (!isFormatted(todos, "d")) {
-            return stringFormat("d");
+            throw new BebopException(stringFormat("d"));
         }
         String[] deadlines = todos[1].split(" /by ");
         if (!isFormatted(deadlines, "d")) {
-            return stringFormat("d");
+            throw new BebopException(stringFormat("d"));
         }
         if (isValidLocalDateTime(deadlines[1])) {
             Deadline d = new Deadline(deadlines[0], false, deadlines[1]);
             tasks.addTask(d);
             return d.printSuccess(tasks.size());
         } else {
-            return "Incorrect time format! Valid time format is YYYY-MM-DD HH:MM";
+            throw new BebopException("Incorrect time format! Valid time format is YYYY-MM-DD HH:MM" + "\n"
+                    + "Months have to be between 1 - 12" + "\n"
+                    + "Days have to be between 1 - 31" + "\n"
+                    + "Hours have to be between 0 - 23" + "\n"
+                    + "Minutes have to be between 0 - 59" + "\n");
         }
     }
 
-    public static String executeEvent(TaskList tasks, String command) {
+    public static String executeEvent(TaskList tasks, String command) throws BebopException {
         String[] todos = command.split("event ");
         if (!isFormatted(todos, "e")) {
-            return stringFormat("e");
+            throw new BebopException(stringFormat("e"));
         }
         String[] deadlines = todos[1].split(" /from ");
         if (!isFormatted(deadlines, "e")) {
-            return stringFormat("e");
+            throw new BebopException(stringFormat("e"));
         }
         String[] events = deadlines[1].split(" /to ");
         if (!isFormatted(events, "e")) {
-            return stringFormat("e");
+            throw new BebopException(stringFormat("e"));
         }
         if (isValidLocalDateTime(events[0]) && isValidLocalDateTime(events[1])) {
             Event e = new Event(deadlines[0], false, events[0], events[1]);
             tasks.addTask(e);
             return e.printSuccess(tasks.size());
         } else {
-            return "Incorrect time format! Valid time format is YYYY-MM-DD HH:MM";
+            throw new BebopException("Incorrect time format! Valid time format is YYYY-MM-DD HH:MM" + "\n"
+                    + "Months have to be between 1 - 12" + "\n"
+                    + "Days have to be between 1 - 31" + "\n"
+                    + "Hours have to be between 0 - 23" + "\n"
+                    + "Minutes have to be between 0 - 59" + "\n");
         }
     }
 
@@ -110,10 +130,12 @@ public class AddCommand extends Command {
                     + "\"todo EVENTNAME\"";
         } else if (format.equals("d")) {
             return "Please give a valid deadline format: "
-                    + "\"deadline EVENTNAME /by ENDTIME\"";
+                    + "\"deadline EVENTNAME /by ENDTIME\"" + "\n"
+                    + "Time format is strictly YYYY-MM-DD HH:MM";
         } else {
             return "Please give a valid event format: "
-                    + "\"event EVENTNAME /from STARTTIME /to ENDTIME\"";
+                    + "\"event EVENTNAME /from STARTTIME /to ENDTIME\"" + "\n"
+                    + "Time format is strictly YYYY-MM-DD HH:MM";
         }
     }
 

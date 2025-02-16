@@ -1,8 +1,6 @@
 package bebop.command;
 
 import bebop.exception.BebopException;
-import bebop.task.Deadline;
-import bebop.task.Event;
 import bebop.task.TaskList;
 import bebop.task.Todo;
 import bebop.ui.Storage;
@@ -18,20 +16,18 @@ public class DeleteCommandTest {
         t.addTask(new Todo("world", true));
         t.addTask(new Todo("world2", true));
         t.addTask(new Todo("world3", true));
-        assertEquals(true, a.execute(t, new Ui(), new Storage("data/bebop.txt")));
+        assertEquals("Alright! Congrats on finishing your task:)\n"
+                + "\t[T] [X] world3\n", a.execute(t, new Ui(), new Storage("data/bebop.txt")));
     }
 
+    @Test
     public void DeleteCommandTestFailure() throws BebopException {
-        try {
-            DeleteCommand a = new DeleteCommand("delete 10");
-            TaskList t = new TaskList();
-            t.addTask(new Todo("world", true));
-            t.addTask(new Todo("world2", true));
-            t.addTask(new Todo("world3", true));
-            assertEquals(true, a.execute(t, new Ui(), new Storage("data/bebop.txt")));
-        } catch (BebopException e) {
-            assertEquals("\tDelete only accepts valid integers", e.getMessage());
-        }
-
+        DeleteCommand a = new DeleteCommand("delete 10");
+        TaskList t = new TaskList();
+        t.addTask(new Todo("world", true));
+        t.addTask(new Todo("world2", true));
+        t.addTask(new Todo("world3", true));
+        assertEquals("Delete only accepts valid integers",
+                a.execute(t, new Ui(), new Storage("data/bebop.txt")));
     }
 }

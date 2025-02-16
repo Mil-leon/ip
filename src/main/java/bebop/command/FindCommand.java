@@ -2,6 +2,7 @@ package bebop.command;
 
 import bebop.exception.BebopException;
 import bebop.task.TaskList;
+import bebop.ui.Bebop;
 import bebop.ui.Storage;
 import bebop.ui.Ui;
 
@@ -26,15 +27,18 @@ public class FindCommand extends Command {
      * @return boolean if the program will continue or not.
      * @throws BebopException checks for correct command format.
      */
-    public String execute(TaskList tasks, Ui ui, Storage storage) throws BebopException {
-        String[] input = command.split(" ");
-        assert input.length > 0;
-        String output = "";
-        if (input.length != 2) {
-            output = "Invalid find command, needs a subject to find";
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
+        try {
+            String[] input = command.split(" ");
+            assert input.length > 0;
+            String output = "";
+            if (input.length != 2) {
+                throw new BebopException("Invalid find command, needs a subject to find");
+            }
+            output = tasks.findTask(input[1]);
             return output;
+        } catch (BebopException e) {
+            return e.getMessage();
         }
-        output = tasks.findTask(input[1]);
-        return output;
     }
 }

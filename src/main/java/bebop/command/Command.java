@@ -20,7 +20,7 @@ public abstract class Command {
      * @return boolean if the program will continue or not.
      * @throws BebopException checks for correct command format.
      */
-    public abstract String execute(TaskList tasks, Ui ui, Storage storage) throws BebopException;
+    public abstract String execute(TaskList tasks, Ui ui, Storage storage);
 
     /**
      * check if the string is an Integer.
