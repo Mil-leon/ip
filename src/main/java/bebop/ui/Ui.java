@@ -34,21 +34,21 @@ public class Ui {
     }
 
     /**
-     * adds a divider between commands.
+     * Adds a divider between commands.
      */
     public void divider() {
         System.out.println("\t__________________________________");
     }
 
     /**
-     * reads the next user input.
+     * Reads the next user input.
      */
     public String readCommand() {
         return scan.nextLine();
     }
 
     /**
-     * error message.
+     * Error message.
      *
      * @param m is the error message/fix.
      */

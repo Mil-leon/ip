@@ -11,7 +11,7 @@ import bebop.ui.Ui;
 public abstract class Command {
 
     /**
-     * executes command.
+     * Executes command.
      *
      * @param tasks Tasklist storing tasks.
      * @param ui Ui to print commands.
@@ -22,7 +22,7 @@ public abstract class Command {
     public abstract String execute(TaskList tasks, Ui ui, Storage storage);
 
     /**
-     * check if the string is an Integer.
+     * Check if the string is an Integer.
      *
      * @param str string to be converted to integer.
      * @return boolean to check if isInteger.

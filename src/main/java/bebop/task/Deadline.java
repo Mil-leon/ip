@@ -30,7 +30,7 @@ public class Deadline extends Task {
     }
 
     /**
-     * prints task.
+     * Prints task.
      *
      * @return String of formatted Task.
      */
@@ -40,7 +40,7 @@ public class Deadline extends Task {
     };
 
     /**
-     * prints Successful adding into TaskList
+     * Prints Successful adding into TaskList
      *
      * @param size number of Task in the taskList
      */

@@ -22,7 +22,7 @@ public abstract class Task {
     }
 
     /**
-     * gets current status of the task.
+     * Gets current status of the task.
      *
      * @return String to validate if task is done.
      */
@@ -43,7 +43,7 @@ public abstract class Task {
     public abstract String printSuccess(int size);
 
     /**
-     * prints the date the task is associated with.
+     * Prints the date the task is associated with.
      *
      * @param date LocalDateTime for the task.
      * @return formatted string for the dateTime.
@@ -53,7 +53,7 @@ public abstract class Task {
     };
 
     /**
-     * returns description.
+     * Returns description.
      *
      *
      * @return description.

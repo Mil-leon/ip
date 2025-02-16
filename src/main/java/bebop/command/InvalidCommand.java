@@ -10,7 +10,7 @@ import bebop.ui.Ui;
 public class InvalidCommand extends Command {
 
     /**
-     * executes invalid command.
+     * Executes invalid command.
      *
      * @param tasks Tasklist storing tasks.
      * @param ui Ui to print commands.

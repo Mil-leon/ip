@@ -1,7 +1,7 @@
 package bebop.task;
 
 /**
- * todo task to store the description.
+ * Todo task to store the description.
  */
 
 public class Todo extends Task {
@@ -17,7 +17,7 @@ public class Todo extends Task {
     }
 
     /**
-     * returns the Todo Task.
+     * Returns the Todo Task.
      *
      * @return Todo task formatted.
      */
@@ -27,7 +27,7 @@ public class Todo extends Task {
     };
 
     /**
-     * prints Successful adding into TaskList.
+     * Prints Successful adding into TaskList.
      *
      * @param size number of Task in the taskList.
      */

@@ -29,7 +29,7 @@ public class Storage {
     }
 
     /**
-     * loads files into taskList.
+     * Loads files into taskList.
      *
      * @param tasks Takes in an empty taskList.
      * @return TaskList after adding all the items in Bebop.txt.
@@ -79,7 +79,7 @@ public class Storage {
     }
 
     /**
-     * loads file into TaskList in the end.
+     * Loads file into TaskList in the end.
      *
      * @param tasks Takes in an empty taskList.
      * @throws IOException if the file could not be created.

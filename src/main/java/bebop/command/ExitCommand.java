@@ -12,7 +12,7 @@ import bebop.ui.Ui;
 public class ExitCommand extends Command {
 
     /**
-     * exits the ui.
+     * Exits the ui.
      *
      * @param tasks Tasklist storing tasks.
      * @param ui Ui to print commands.

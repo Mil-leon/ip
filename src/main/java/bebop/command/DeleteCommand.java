@@ -20,7 +20,7 @@ public class DeleteCommand extends Command {
     }
 
     /**
-     * deletes the command from TaskList.
+     * Deletes the command from TaskList.
      *
      * @param tasks Tasklist storing tasks.
      * @param ui Ui to print commands.

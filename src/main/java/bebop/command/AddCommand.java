@@ -32,7 +32,7 @@ public class AddCommand extends Command {
     }
 
     /**
-     * adds the command into TaskList.
+     * Adds the command into TaskList.
      *
      * @param tasks Tasklist storing tasks.
      * @param ui Ui to print commands.
@@ -57,7 +57,7 @@ public class AddCommand extends Command {
     }
 
     /**
-     * execution of Todo.
+     * Execution of Todo.
      *
      * @param tasks task list to be added.
      * @param command command being stored.

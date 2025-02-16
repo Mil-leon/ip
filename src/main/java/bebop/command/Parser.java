@@ -6,7 +6,7 @@ package bebop.command;
 public class Parser {
 
     /**
-     * parses command string into command type.
+     * Parses command string into command type.
      *
      * @param command command being processed.
      * @return command of Command class.

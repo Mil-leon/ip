@@ -18,13 +18,13 @@ public class TaskList {
     }
 
     /**
-     * prints all the task in TaskList.
+     * Prints all the task in TaskList.
      */
     public String printAllTask() {
         StringBuilder output = new StringBuilder();
         int i = 0;
         for (Task task : tasks) {
-            output.append(i + 1).append(" ").append(task.printTask());
+            output.append(i + 1).append(" ").append(task.printTask()).append("\n");
             i++;
         }
         return output.toString();
@@ -45,7 +45,7 @@ public class TaskList {
     }
 
     /**
-     * adds Task to the taskList.
+     * Adds Task to the taskList.
      *
      * @param t task to be added.
      */
@@ -55,7 +55,7 @@ public class TaskList {
     }
 
     /**
-     * get Task of the specified index.
+     * Get Task of the specified index.
      *
      * @param index index of task.
      */
@@ -64,7 +64,7 @@ public class TaskList {
     }
 
     /**
-     * deletes Task of the specified index.
+     * Deletes Task of the specified index.
      *
      * @param index index of task.
      */
@@ -74,7 +74,7 @@ public class TaskList {
     }
 
     /**
-     * returns size of the TaskList.
+     * Returns size of the TaskList.
      *
      * @return size of the TaskList.
      */
@@ -83,7 +83,7 @@ public class TaskList {
     }
 
     /**
-     * finds the Task
+     * Finds the Task
      *
      * @param taskName name of the Task.
      */
