@@ -38,8 +38,7 @@ public class AddCommand extends Command {
      * @param ui Ui to print commands.
      * @param storage stores task into Bebop.txt.
      *
-     * @return boolean if the program will continue or not.
-     * @throws BebopException checks for correct command format.
+     * @return String if the program will continue or not.
      */
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) {
@@ -57,6 +56,14 @@ public class AddCommand extends Command {
         }
     }
 
+    /**
+     * execution of Todo.
+     *
+     * @param tasks task list to be added.
+     * @param command command being stored.
+     * @return String to be printed.
+     * @throws  BebopException thrown if formatted wrongly.
+     */
     public static String executeTodo(TaskList tasks, String command) throws BebopException {
         try {
             String[] todos = command.split("todo ");
@@ -75,6 +82,14 @@ public class AddCommand extends Command {
 
     }
 
+    /**
+     * execution of deadline.
+     *
+     * @param tasks task list to be added.
+     * @param command command being stored.
+     * @return String to be printed.
+     * @throws  BebopException thrown if formatted wrongly.
+     */
     public static String executeDeadline(TaskList tasks, String command) throws BebopException {
         String[] todos = command.split("deadline ");
         if (!isFormatted(todos, "d")) {
@@ -97,6 +112,14 @@ public class AddCommand extends Command {
         }
     }
 
+    /**
+     * execution of event.
+     *
+     * @param tasks task list to be added.
+     * @param command command being stored.
+     * @return String to be printed.
+     * @throws BebopException thrown if formatted wrongly.
+     */
     public static String executeEvent(TaskList tasks, String command) throws BebopException {
         String[] todos = command.split("event ");
         if (!isFormatted(todos, "e")) {
@@ -124,6 +147,12 @@ public class AddCommand extends Command {
     }
 
 
+    /**
+     * return string formats for error messages.
+     *
+     * @param format type of task
+     * @return String to be printed.
+     */
     public static String stringFormat(String format) {
         if (format.equals("t")) {
             return "Please give a valid todo format: "

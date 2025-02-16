@@ -2,7 +2,6 @@ package bebop.command;
 
 import bebop.exception.BebopException;
 import bebop.task.TaskList;
-import bebop.ui.Bebop;
 import bebop.ui.Storage;
 import bebop.ui.Ui;
 
@@ -24,8 +23,7 @@ public class FindCommand extends Command {
      * @param ui Ui to print commands.
      * @param storage stores task into Bebop.txt.
      *
-     * @return boolean if the program will continue or not.
-     * @throws BebopException checks for correct command format.
+     * @return string if the program will continue or not.
      */
     public String execute(TaskList tasks, Ui ui, Storage storage) {
         try {

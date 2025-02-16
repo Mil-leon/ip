@@ -3,7 +3,6 @@ package bebop.ui;
 import java.io.IOException;
 
 import bebop.command.Parser;
-import bebop.exception.BebopException;
 import bebop.task.TaskList;
 
 /**

@@ -15,6 +15,11 @@ public class Main extends Application {
 
     private Bebop bebop;
 
+    /**
+     * Main Constructor.
+     *
+     * @throws IOException if data/Bebop.txt does not exist
+     */
     public Main() throws IOException {
         try {
             this.bebop = new Bebop("data/Bebop.txt");

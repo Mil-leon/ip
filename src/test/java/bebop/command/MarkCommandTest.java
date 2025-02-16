@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import bebop.task.Todo;
 import bebop.task.TaskList;
+import bebop.task.Todo;
 import bebop.ui.Storage;
 import bebop.ui.Ui;
 
@@ -28,3 +28,4 @@ public class MarkCommandTest {
                 a.execute(t, new Ui(), new Storage("data/bebop.txt")));
     }
 }
+
