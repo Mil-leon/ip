@@ -12,6 +12,7 @@ Here's a list of features
 5. Mark/Unmark task
 6. Save task (**Tasks will only be saved in the tasklist if bye is called!!!**)
 7. Find task by name
+8. List all tasks
 
 ## Adding a todo
 
@@ -87,6 +88,14 @@ Format - ```mark/unmark INDEX```
 9 Good Job! I've marked the task as done!
 ```
 
+## bye 
+
+Format - ```bye```
+**Tasks will only be saved in the tasklist if bye is called!!!**
+
+*Example*
+```bye```
+
 ## find task
 
 Format - ```find TASK```
@@ -101,10 +110,17 @@ Format - ```find TASK```
 [D] [X] bday (by: Oct-12-2000 10:30:00)
 ```
 
-## bye 
+## list task
 
-Format - ```bye```
-**Tasks will only be saved in the tasklist if bye is called!!!**
+Format - ```list```
 
 *Example*
-```bye```
+```list```
+
+*Output*
+```
+1 [T] [ ] birthday
+2 [D] [X] bday (by: Oct-12-2000 10:30:00)
+3 [E] [X] vday (from: Feb-14-2025 10:30:00 to: Feb-15-2025 10:40:00)
+```
+
