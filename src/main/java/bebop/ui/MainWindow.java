@@ -51,7 +51,6 @@ public class MainWindow extends AnchorPane {
         String input = userInput.getText();
         Command c = bebop.getParser().parse(input);
         String output = c.execute(bebop.getTaskList(), bebop.getUi(), bebop.getStorage());
-        System.out.println(output);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
                 DialogBox.getBebopDialog(output, dukeImage)
