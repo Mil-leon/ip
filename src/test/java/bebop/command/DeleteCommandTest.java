@@ -1,16 +1,18 @@
 package bebop.command;
 
-import bebop.exception.BebopException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
 import bebop.task.TaskList;
 import bebop.task.Todo;
 import bebop.ui.Storage;
 import bebop.ui.Ui;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class DeleteCommandTest {
     @Test
-    public void DeleteCommandTestSuccess() throws BebopException {
+    public void deleteCommandTestSuccess() {
         DeleteCommand a = new DeleteCommand("delete 3");
         TaskList t = new TaskList();
         t.addTask(new Todo("world", true));
@@ -21,7 +23,7 @@ public class DeleteCommandTest {
     }
 
     @Test
-    public void DeleteCommandTestFailure() throws BebopException {
+    public void deleteCommandTestFailure() {
         DeleteCommand a = new DeleteCommand("delete 10");
         TaskList t = new TaskList();
         t.addTask(new Todo("world", true));
