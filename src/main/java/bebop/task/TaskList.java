@@ -27,7 +27,6 @@ public class TaskList {
             output.append(i + 1).append(" ").append(task.printTask());
             i++;
         }
-        output.append("__________________________________");
         return output.toString();
     }
 
